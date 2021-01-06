@@ -49,3 +49,34 @@ exports.tambahOrang = function(req, res){
         }
     });
 };
+
+exports.ubah = function(req, res ){
+    var id = req.body.id; 
+    var nim = req.body.nim;
+    var nama = req.body.nama;
+    var job = req.body.job;
+
+    connetion.query('update client  set nim =?, nama =? , job=? where id =?',[nim,nama,job ,id],
+    function(error, rows, fields){
+        if (error){
+            console.log(error);
+        }else{
+            response.ok("berhasil ubah data", res)
+        }
+    });
+    
+};
+
+exports.hapus = function (req, res){
+    var id = req.body.Id;
+
+
+    connetion.query('delete from client WHERE Id=?',[id], 
+    function(error, rows, fields){
+        if (error){
+            console.log(error);
+        }else{
+            response.ok("berhasil ubah data", res)
+        }
+    });
+}
