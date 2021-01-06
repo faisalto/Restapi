@@ -31,3 +31,21 @@ exports.tampilId = function(req, res){
     });
 
 };
+
+// menambahkan data
+
+exports.tambahOrang = function(req, res){
+    var nim = req.body.nim;
+    var nama = req.body.nama;
+    var job = req.body.job;
+
+    connetion.query('insert into client (nim, nama, job) values (?,?,?)', 
+    [nim, nama, job], 
+    function(error, rows, field){
+        if (error){
+            console.log(error);
+        }else{
+            response.ok("berhasil nambah data", res)
+        }
+    });
+};
