@@ -18,3 +18,16 @@ exports.tampilsemua = function(req,res){
         }
     });
 };
+
+exports.tampilId = function(req, res){
+    let id = req.params.id;    
+    connetion.query('select * from client where id =?', [id],
+    function(error, rows, field){
+        if (error){
+            console.log(error);
+        }else{
+            response.ok(rows, res)
+        }
+    });
+
+};
